@@ -36,14 +36,14 @@ deploy() {
         mkdir -p $ROOT_PATH/ver/$latest_sha;
         test $? -eq 0 || abort "Directory creation unsuccessful!"
 
-        rsync -aHW --stats #ROOT_PATH/source/ $ROOT_PATH/ver/$latest_sha;
+        rsync -aHW --stats $ROOT_PATH/source/ $ROOT_PATH/ver/$latest_sha;
         test $? -eq 0 || abort "Version copy unsuccessful!"
 
         log "Installing and building from source...";
         cd $ROOT_PATH/ver/$latest_sha && yarn && yarn build || (rm -rf $ROOT_PATH/ver/$latest_sha && abort "Installation or build failed!")
 
         log "Updating symlink to current version..."
-        ln -sfn $ROOT_PATH/ver/$latest_sha $ROOT_PATH/current 
+        ln -sfn $ROOT_PATH/ver/$latest_sha $ROOT_PATH/current
         test $? -eq 0 || abort "Symlink failed!"
     fi
 
