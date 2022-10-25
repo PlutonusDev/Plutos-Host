@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "API endpoints for Plutonus Host",
+  "main": "src/app.js",
+  "author": "PlutonusDev",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "dev": "node ."
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
